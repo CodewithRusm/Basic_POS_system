@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="card">
+      <h2>Point of Sale System</h2>
+      <hr>
+      <div class="top-bar">
+        <div>
+          <label for="barcode">Barcode: </label>
+          <input type="text" id="barcode" placeholder="Scan or enter barcode">
+          <label for="quantity">Quantity: </label>
+          <input type="number" id="quantity" class="quantity-input" value="1" min="1">
+        </div>
+        <input type="text" id="total" class="total-display" value="$0.00" autocomplete="off" readonly>
+      </div>
+
+      <h3>Purchased Data</h3>
+
+      <div class="table-container">
+        <table id="product-data">
+          <thead>
+            <tr>
+              <th>Barcode</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cartBody">
+            <tr id="empty-row">
+              <td colspan="6" style="text-align: center;">No purchased yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="pay-btn" id="payBtn">Pay</button>
+    </div>
+
+      <!--PAYMENT MODAL-->
+      <div class="modal" id="overlay">
+        <div class="modal-content">
+          <span class="close" id="closeBtn">&times;</span>
+          <h2>Payment</h2>
+          <p>Amount to Pay: <strong id="amountToPay"></strong></p>
+          <input type="number" id="amountPaid" placeholder="Enter amount" min="1">
+          <br>
+          <button id="submitPayment" class="pay">Submit Payment</button>
+          <p id="message"></p>
+        </div>
+      </div>
+
+      <!--Edit MODAL-->
+      <div class="modal" id="edit-overlay">
+        <div class="modal-content">
+          <span class="close" id="close">&times;</span>
+          <h2>Edit Quantity</h2>
+          <input type="number" id="editInput" placeholder="Enter new quantity">
+          <br>
+          <button id="submitEdit" class="pay">Edit</button>
+         </div>
+      </div>
+
+</body>
+    <script src="{{ url_for('static', filename='api/script.js')}}"></script>
+</html>
