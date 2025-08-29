@@ -37,8 +37,9 @@ def start_flask():
     app.run(debug=False, port=5000, use_reloader=False)
 
 if __name__ == '__main__':
-    start_flask()
-    # Run Flask in a background thread
+    start_flask() # browser view
+
+    # Run Flask in a background thread and webview
     '''
     flask_thread = threading.Thread(target=start_flask)
     flask_thread.daemon = True
